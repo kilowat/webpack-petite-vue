@@ -1,0 +1,8 @@
+.sidebar-left{
+  background-color: #00ffea;
+  width: $sidebar-left;
+  margin-right: $sidebar-margin;
+  @include breakpoint(max-width $desktop-width){
+    display: none;
+  }
+}

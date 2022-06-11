@@ -1,0 +1,25 @@
+<%
+  var data = {
+    title: "Second page",
+    show_sidebar: true,
+    sidebar_html : _.template(require('./../includes/sidebar.html').default)()
+  }
+%>
+<%= _.template(require('./../includes/header.html').default)(data) %>
+
+
+<section>
+  <h1>Second page</h1>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam assumenda at corporis cum, esse facere fugit illum iure maiores nulla pariatur perspiciatis provident quis quo saepe tempore totam voluptate.
+  </p>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa exercitationem fuga illum ipsam iure laborum non odit perferendis, placeat quod, recusandae totam. Adipisci aspernatur consectetur officiis omnis perspiciatis quos!</p>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi atque ipsam numquam quam quasi rerum saepe. Ad aliquid, architecto assumenda consequuntur cumque dicta ex nemo nobis quod repellat totam veritatis?</p>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi cumque deleniti dicta doloribus exercitationem, harum ipsum nihil obcaecati officiis optio possimus quibusdam quos rem repudiandae sequi totam veniam vero.</p>
+</section>
+
+
+<%= _.template(require('./../includes/footer.html').default)(data) %>

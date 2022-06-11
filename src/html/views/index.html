@@ -1,0 +1,29 @@
+<%
+  var data = {
+    title: "Главная",
+  }
+  var news ={
+    "name": "Название",
+    "text" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cumque dolores facere, labore nihil odit temporibus vel voluptates. Atque doloribus error, facilis fugit incidunt laboriosam maxime quam sit vero voluptas?"
+  }
+%>
+<%= _.template(require('./../includes/header.html').default)(data) %>
+  
+  <div>
+    <div v-scope="Counter({ initialCount: 1 })" @vue:mounted="mounted">
+      <p>{{ count }}</p>
+      <button @click="inc">increment</button>
+    </div>
+    <div v-scope>
+      <p>Global {{ basket.count }}</p>
+      <button @click="basket.inc">increment</button>
+    </div>
+    <h2>Спрайты svg:</h2>
+    <svg class="svg-icon">
+      <use xlink:href="<%=htmlWebpackPlugin.options.svgPath%>#sprite-pencil"></use>
+    </svg>
+    <svg class="svg-icon">
+      <use xlink:href="<%=htmlWebpackPlugin.options.svgPath%>#sprite-freebsd"></use>
+    </svg>
+  </div>
+<%= _.template(require('./../includes/footer.html').default)(data) %>
