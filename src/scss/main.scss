@@ -2,6 +2,7 @@
 $font-stack: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
 
 body {
+  background-color: #ccc;
   font-family: $font-stack;
   line-height: $base-line-height;
 }
@@ -30,4 +31,7 @@ main {
       width: 100%;
     }
   }
+}
+*[v-cloak] {
+  opacity: 0;
 }

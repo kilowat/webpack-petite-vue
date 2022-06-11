@@ -1,5 +1,5 @@
-import basket from "./basket"
+import favorite from "./favorite"
 
 export default {
-    basket
+    favorite
 }
