@@ -6,7 +6,6 @@ const state = reactive({
 });
 
 function add(id) {
-
   const index = state.items.indexOf(id);
   if (index > -1) {
     state.items.splice(index, 1);

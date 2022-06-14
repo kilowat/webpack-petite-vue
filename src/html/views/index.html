@@ -51,7 +51,7 @@
   </div>
   <div class="component-block">
     <div class="component-name">Dynamic full slider</div>
-    <div class="dynamic-slider" v-scope="DynamicSlider({name: 'value'})"></div>
+    <div class="swiper main-slider" v-cloak v-scope="DynamicSlider({name: 'value'})" v-effect="initSlider($el)"></div>
   </div>
   <div class="component-block">
     <div class="component-name">Sprite svg:</div>
