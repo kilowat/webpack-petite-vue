@@ -1,5 +1,10 @@
 .main-slider{
   margin-bottom: 40px;
-  height: 600px;
-  
+  height: 400px;
+  img{
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
 }

@@ -8,27 +8,53 @@
   }
 %>
 <%= _.template(require('./../includes/header.html').default)(data) %>
-  <div>
-    <div id="test"></div>
-    <h2>Список новостей</h2>
-    <div v-scope="{ count: 0 }" @vue:mounted="console.log('mounted on: ', $el)">
-      {{ count }}
-      <button @click="count++">inc</button>
-    </div>
-    <div v-scope>
-      <button @click="eventBus.emit('on-change', 'test')">event</button>
-    </div>
-    <div class="news">
-      <div class="news__item">
-        <div class="news__name">Название</div>
-        <div v-scope class="button-row">
-          <button @click="store.favorite.add(1)">add</button>
+  <div class="component-block">
+    <div class="component-name">form:</div>
+    <div v-scope="FeedBackForm()">
+      <form @submit.prevent="submit">
+        <div class="form-row">
+          <input type="tel" name="phone" class="input-text"  required placeholder="Телефон">
         </div>
-      </div>
+        <div class="form-row">
+          <input type="email" name="email" class="input-text" required placeholder="e-mail">
+        </div>
+        <div class="form-row">
+          <input type="checkbox" name="save" class="input-checkbox" id="save-check" name="save" value="Y">
+          <label for="save-check">Save</label>
+        </div>
+        <div class="form-row">
+          <button type="submit" class="btn btn-primary">Отправить</button>
+        </div>
+      </form>
     </div>
   </div>
-  <div>
-    <h2>Спрайты svg:</h2>
+  <div class="component-block">
+    <div class="component-name">Static full slider</div>
+      <div class="swiper main-slider" v-cloak v-scope="FullSlider({name: 'value'})" v-effect="initSlider($el)">
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <img src="/uploads/slide-1.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="/uploads/slide-1.png" alt="">
+        </div>
+        <div class="swiper-slide">
+          <img src="/uploads/slide-1.png" alt="">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </div>
+  <div class="component-block">
+    <div class="component-name">Dynamic full slider</div>
+    <div class="dynamic-slider" v-scope="DynamicSlider({name: 'value'})"></div>
+  </div>
+  <div class="component-block">
+    <div class="component-name">Sprite svg:</div>
     <svg class="svg-icon">
       <use xlink:href="<%=htmlWebpackPlugin.options.svgPath%>#sprite-pencil"></use>
     </svg>
@@ -36,4 +62,6 @@
       <use xlink:href="<%=htmlWebpackPlugin.options.svgPath%>#sprite-freebsd"></use>
     </svg>
   </div>
+  
+
 <%= _.template(require('./../includes/footer.html').default)(data) %>

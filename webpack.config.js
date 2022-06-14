@@ -76,7 +76,7 @@ const config = {
     port: 9000
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.tpl.html',],
     modules: ["node_modules"],
     alias: {
       '@': resolve('src'),
@@ -86,14 +86,24 @@ const config = {
     rules: [
       {
         test: /\.tpl.html$/,
-        use: 'raw-loader'
+        include: path.resolve(__dirname, "src/js/components"),
+        use: [
+          {
+            loader: 'raw-loader',
+          },
+        ],
       },
+      /*
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use:{
           loader: 'babel-loader',
           options: {
+            plugins: [
+              "@babel/plugin-transform-runtime",
+              "transform-html-import-to-string"
+            ],
             presets: [
               [
                 '@babel/preset-env',
@@ -102,11 +112,12 @@ const config = {
           }
         },
       },
+      */
       {
         test: /\.(css|sass|scss)$/,
         include: [
           path.resolve(__dirname, "src/scss"),
-          path.resolve(__dirname, "src/components"),
+          path.resolve(__dirname, "src/js"),
           path.resolve(__dirname, 'node_modules'),
         ],
         use: [{
@@ -191,9 +202,19 @@ if (!isDev) {
     }));
 }
 
+function clearDist() {
+  const p = path.resolve(__dirname, './dist/js')
+  if (!fs.existsSync(p)) return;
+  let regex = /[.]gz$/
+
+  fs.readdirSync(p)
+      .filter(f => regex.test(f))
+      .map(f => fs.unlinkSync(p + '/' + f))
+}
+
 module.exports = (env, argv) => {
-  if (argv.mode === "production") {
-    //to do something
+  if (argv.mode === "development") {
+    clearDist();
   }
   return config;
 };
