@@ -9,6 +9,13 @@
 %>
 <%= _.template(require('./../includes/header.html').default)(data) %>
   <div class="component-block">
+    <div class="component-name">Modal:</div>
+    <button class="btn btn-primary">show</button>
+    <div v-scope="Modal({id: 'simple-modal'})">
+      modal text
+    </div>
+  </div>
+  <div class="component-block">
     <div class="component-name">form:</div>
     <div v-scope="FeedBackForm()">
       <form @submit.prevent="submit">
