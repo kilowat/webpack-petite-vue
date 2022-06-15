@@ -35,3 +35,4 @@ main {
 *[v-cloak] {
   opacity: 0;
 }
+[aria-hidden="true"] { visibility: hidden; }

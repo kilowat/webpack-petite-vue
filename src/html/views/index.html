@@ -10,9 +10,22 @@
 <%= _.template(require('./../includes/header.html').default)(data) %>
   <div class="component-block">
     <div class="component-name">Modal:</div>
-    <button class="btn btn-primary">show</button>
-    <div v-scope="Modal({id: 'simple-modal'})">
-      modal text
+    <div v-scope> 
+      <div class="menu">
+        <button @click="Modal.show('modal-1', {value:1})">Open 1</button>
+        <button @click="Modal.close('modal-1')">Close 1</button>
+        <br>
+        <button @click="Modal.show('modal-2', {value:1})">Open 2</button>
+        <button @click="Modal.close('modal-2')">Close 2</button>
+        <br>
+        <button @click="Modal.closeAll()">Close all</button>
+      </div>
+      <div v-scope="Modal.create('modal-1', {value: 0})" id="modal-1"  aria-hidden="true">
+          test1 {{data}}
+      </div>
+      <div v-scope="Modal.create('modal-2', {value: 0})" id="modal-2"  aria-hidden="true">
+        test2 {{data}}
+    </div>
     </div>
   </div>
   <div class="component-block">
