@@ -15,16 +15,24 @@
         <button @click="Modal.show('modal-1', {value:1})">Open 1</button>
         <button @click="Modal.close('modal-1')">Close 1</button>
         <br>
-        <button @click="Modal.show('modal-2', {value:1})">Open 2</button>
+        <button @click="Modal.show('modal-2', {value:2})">Open 2</button>
         <button @click="Modal.close('modal-2')">Close 2</button>
         <br>
         <button @click="Modal.closeAll()">Close all</button>
       </div>
-      <div v-scope="Modal.create('modal-1', {value: 0})" id="modal-1"  aria-hidden="true">
-          test1 {{data}}
+      <div 
+        v-scope="Modal.create({id: 'modal-1', width:400 }, {value: 0})"
+        id="modal-1" 
+        aria-hidden="true"
+        @vue:mounted="mounted">
+          <div>test {{ data }}</div>
       </div>
-      <div v-scope="Modal.create('modal-2', {value: 0})" id="modal-2"  aria-hidden="true">
-        test2 {{data}}
+      <div 
+      v-scope="Modal.create({id: 'modal-2'}, {value: 0})"
+      id="modal-2"
+      aria-hidden="true"
+      @vue:mounted="mounted">
+        <div>test2 {{ data }}</div>
     </div>
     </div>
   </div>
