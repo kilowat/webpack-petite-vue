@@ -1,6 +1,8 @@
 @import "boot";
 $font-stack: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
-
+*{
+  box-sizing: border-box;
+}
 body {
   background-color: #ccc;
   font-family: $font-stack;
@@ -32,7 +34,9 @@ main {
     }
   }
 }
+.align-center{
+  text-align: center;
+}
 *[v-cloak] {
   opacity: 0;
 }
-

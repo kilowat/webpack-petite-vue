@@ -1,0 +1,42 @@
+a.btn{
+  text-decoration: none;
+}
+.btn[disabled] {
+  opacity: 0.6;
+}
+.btn{
+  background-color: transparent;
+  padding-left: 1.86em;
+  padding-right: 1.86em;
+  padding-top: 0.82em;
+  padding-bottom: 0.78em;
+  line-height: 1em;
+  font-size: 15px;
+  font-family: var(--title-font);
+  text-align: center;
+  box-shadow: 0;
+  border: 0;
+  transition: all 100ms;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  &.btn-favorite{
+    padding: 0;
+  }
+}
+.btn-accent{
+  background-color: var(--accent-color);
+  color: var(--accent-text-color);
+  &:hover{
+    background-color: var(--accent-hover-color);
+  }
+}
+.btn-transparent{
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 12px;
+  &:hover{
+    background-color: var(--accent-hover-color);
+  }
+}

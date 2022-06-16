@@ -19,6 +19,9 @@ for(const i in directives) {
 window.eventBus = eventBus;
 window.vapp = vapp.mount('#app');
 
+// init global store
+store.favorite.init();
+
 document.addEventListener("DOMContentLoaded", function(event) { 
   //to do
 });

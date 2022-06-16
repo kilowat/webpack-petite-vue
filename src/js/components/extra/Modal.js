@@ -23,10 +23,10 @@ export default {
     $el.classList.add('m-close');
     const template = `
     <div v-scope class="modal-root" @click="Modal.close('${props.id}')">
+      <svg class="svg-icon modal-close-icon" v-scope="SvgIcon('close')"></svg>
       <div class="modal-bg">
         <div class="modal-window" @click.stop="" :style="{maxWidth: width + 'px'}">
           ${$el.innerHTML}
-          {{width}}
         </div>
       </div>
     </div>`
@@ -42,7 +42,6 @@ export default {
     }
   },
   show(id, data) {
-    console.log('show');
     this.closeAll(id);
     const $el = state.getEl(id);
 

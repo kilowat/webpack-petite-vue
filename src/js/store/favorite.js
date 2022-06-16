@@ -14,6 +14,10 @@ function add(id) {
   }
 }
 
+function isSelected(id) {
+  return state.items.includes(id);
+}
+
 async function init() {
   const storageValue = localStorage.getItem(KEY);
   if (storageValue) {
@@ -28,6 +32,7 @@ async function init() {
 export default {
   get items() { return state.items },
   get count() { return state.items.length},
+  isSelected,
   add,
   init,
 };
