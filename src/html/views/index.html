@@ -12,7 +12,7 @@
     <div class="component-name">Modal:</div>
     <div v-scope> 
       <div>
-        <button class="btn btn-accent" @click="Modal.show('modal-1', {value:2})">Open modal with data: {value: 2}</button>
+        <button class="btn btn-primary" @click="Modal.show('modal-1', {value:2})">Open modal with data: {value: 2}</button>
       </div>
       <div 
         v-scope="Modal.create({id: 'modal-1', width:400 }, {value: 0})"
@@ -42,7 +42,7 @@
           </label>
         </div>
         <div class="form-row">
-          <button type="submit" class="btn btn-accent">Отправить</button>
+          <button type="submit" class="btn btn-primary">Отправить</button>
         </div>
       </form>
     </div>

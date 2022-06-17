@@ -24,11 +24,11 @@ a.btn{
     padding: 0;
   }
 }
-.btn-accent{
-  background-color: var(--accent-color);
-  color: var(--accent-text-color);
+.btn-primary{
+  background-color:  var(--primary-color);
+  color: var(--primary-text-color);
   &:hover{
-    background-color: var(--accent-hover-color);
+    background-color:  var(--primary-color);
   }
 }
 .btn-transparent{
@@ -37,6 +37,6 @@ a.btn{
   color: #fff;
   font-size: 12px;
   &:hover{
-    background-color: var(--accent-hover-color);
+    background-color: var(--priamry-hover-color);
   }
 }
