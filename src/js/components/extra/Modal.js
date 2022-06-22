@@ -25,7 +25,7 @@ export default {
     <div v-scope class="modal-root" @click="Modal.close('${props.id}')">
       <svg class="svg-icon modal-close-icon" v-scope="SvgIcon('close')"></svg>
       <div class="modal-bg">
-        <div class="modal-window" @click.stop="" :style="{maxWidth: width + 'px'}">
+        <div class="modal-window" @click.stop="" :style="'--modal__max-width:' + width + 'px'">
           ${$el.innerHTML}
         </div>
       </div>
@@ -47,10 +47,12 @@ export default {
 
     if (!state.items[id]) throw Error(`Modal with id ${id} not found`);
     if (data) state.items[id].data = data;
-    if (!document.querySelector('#'+id)) document.querySelector('body').appendChild($el);
     
     $el.classList.remove('m-close');
     $el.classList.add('m-open');
+    
+    if (!document.querySelector('#'+id)) document.querySelector('body').appendChild($el);
+    
     document.querySelector('body').style.overflow = 'hidden';
   },
   close(id) {

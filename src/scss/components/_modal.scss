@@ -13,6 +13,9 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  @include breakpoint(max-width $pad-width){
+    align-items: flex-end;
+  }
 }
 .modal-window {
   z-index: 9999;
@@ -21,18 +24,33 @@
   border-radius: 2px;
   width: 100%;
   padding: 20px;
-
+  max-width: var(--modal__max-width);
+  @include breakpoint(max-width $pad-width){
+    max-width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 70vh;
+    border-radius: 25px 25px 0 0;
+  }
 }
 .m-open .modal-window{
-  animation: modalIn .5s forwards;
+  @include breakpoint(max-width $pad-width){
+    animation: modalIn .3s ease-in-out;
+  }
 }
 .m-close{
-  transition: delay .3s;
-  transition-property: visibility;
   visibility: hidden;
+  @include breakpoint(max-width $pad-width){
+    transition: delay .3s;
+    transition-property: visibility;
+  }
 }
 .m-close .modal-window{
-  animation: modalOut .3s forwards;
+  @include breakpoint(max-width $pad-width){
+    max-width: 100%;
+    animation: modalOut .3s forwards;
+  }
 }
 .modal-close-icon {
   position: absolute;
@@ -47,31 +65,36 @@
 
 [aria-hidden="true"] { visibility: hidden; }
 
+@keyframes fadelIn {
+  0% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+  }
+}
 @keyframes modalIn {
-  from {
-    transform: translateY(-3000px);
+  0% {
+    height: 0;
   }
-  60% {
-    transform: translateY(25px);
-  }
-  75% {
-    transform: translateY(-10px)
-  }
-  90% {
-    transform: translateY(5px);
+  100% {
+    height: 70vh;
   }
 }
 @keyframes modalOut {
   0% {
-    transform: translateY(5px);
+    height: 70vh;
   }
-  60% {
-    transform: translateY(-10px)
-  }
-  75% {
-    transform: translateY(25px);
-  }
-  to {
-    transform: translateY(-3000px);
+  100% {
+    height: 0;
   }
 }
