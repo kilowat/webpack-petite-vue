@@ -1,6 +1,6 @@
 .main-slider{
   margin-bottom: 40px;
-  height: 400px;
+  height: calc (100% / 800/400);
   transition: all 100ms;
   opacity: 1;
   img{
