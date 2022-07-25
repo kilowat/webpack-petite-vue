@@ -1,5 +1,5 @@
 
-export default (props)=>{
+export default ()=>{
   return {
     submit(e) {
       const formData = new FormData(e.target)

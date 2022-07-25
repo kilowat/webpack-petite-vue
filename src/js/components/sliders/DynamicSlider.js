@@ -1,6 +1,5 @@
 import template from './dynamicSlider.tpl.html'
 
-
 export default (props)=>{
   return {
     $template: template,

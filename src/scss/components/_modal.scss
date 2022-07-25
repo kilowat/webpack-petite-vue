@@ -25,7 +25,9 @@
   width: 100%;
   padding: 20px;
   max-width: var(--modal__max-width);
+  opacity: 0;
   @include breakpoint(max-width $pad-width){
+    opacity: 1;
     max-width: 100%;
     position: fixed;
     left: 0;
@@ -35,6 +37,8 @@
   }
 }
 .m-open .modal-window{
+  animation: fadeIn .3s ease-in-out;
+  opacity: 1;
   @include breakpoint(max-width $pad-width){
     animation: modalIn .3s ease-in-out;
   }
@@ -47,6 +51,7 @@
   }
 }
 .m-close .modal-window{
+  animation: fadeOut .3s fadeOut;
   @include breakpoint(max-width $pad-width){
     max-width: 100%;
     animation: modalOut .3s forwards;
@@ -65,13 +70,12 @@
 
 [aria-hidden="true"] { visibility: hidden; }
 
-@keyframes fadelIn {
+@keyframes fadeIn{
   0% {
-    visibility: visible;
-    opacity: 0;
+    opacity:0;
   }
   100% {
-    opacity: 1;
+    opacity:1;
   }
 }
 @keyframes fadeOut {

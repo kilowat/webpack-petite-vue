@@ -12,7 +12,6 @@ const isDev = process.env.NODE_ENV === 'development';
 /*sprites path settings*/
 const svgPath = '/sprites/spritemap.svg';
 /*****************************************/
-
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
   return templateFiles.map(item => {
@@ -79,7 +78,7 @@ const config = {
     extensions: ['.js', '.tpl.html',],
     modules: ["node_modules"],
     alias: {
-      '@': resolve('src'),
+      '@': path.resolve(__dirname, 'src/'),
     }
   },
   module: {

@@ -13,7 +13,6 @@ const state = reactive({
   }
 })
 
-
 export default {
   create(props, data){
     state.init(props.id, data);

@@ -4,8 +4,12 @@ import components from './components'
 import store from './store'
 import directives from './directives';
 import EventEmitter from './utils/EventEmitter';
+import di, {$get} from './di';
+
+di.init();
 
 const settings = {
+  $get,
   store,
   ...components,
 }
@@ -21,6 +25,7 @@ window.vapp = vapp.mount('#app');
 
 // init global store
 store.favorite.init();
+store.user.init({userService: $get.userService});
 
 document.addEventListener("DOMContentLoaded", function(event) { 
   //to do
