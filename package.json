@@ -8,7 +8,9 @@
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "prod": "cross-env NODE_ENV=production webpack --mode production && prettier --print-width=120 --parser html --write dist/*.html",
     "watch": "cross-env NODE_ENV=development webpack --mode development && cross-env NODE_ENV=development webpack --mode development --watch",
-    "serv-prod": "http-server ./dist -g"
+    "serv-prod": "http-server ./dist -g",
+    "test": "cross-env NODE_ENV=test webpack && ava",
+    "watch:test": "ava --watch"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -22,6 +24,7 @@
     "@babel/core": "^7.17.8",
     "@babel/plugin-transform-runtime": "^7.18.5",
     "@babel/preset-env": "^7.16.11",
+    "ava": "^4.3.1",
     "babel-loader": "^8.2.4",
     "babel-plugin-transform-html-import-to-string": "^2.0.0",
     "compression-webpack-plugin": "^9.2.0",
@@ -30,9 +33,11 @@
     "css-loader": "^6.7.0",
     "cssnano": "^5.1.0",
     "file-loader": "^6.2.0",
+    "fs-readdir-recursive": "^1.1.0",
     "html-webpack-plugin": "^5.5.0",
     "http-server": "^14.1.0",
     "install": "^0.13.0",
+    "jsdom": "^20.0.0",
     "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",
     "npm": "^8.15.0",
@@ -47,6 +52,16 @@
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4",
+    "webpack-node-externals": "^3.0.0",
     "webpack-spritesmith": "^1.1.0"
+  },
+  "ava": {
+    "files": [
+      "dist/js/tests/**/*.test.js"
+    ],
+    "require": [
+      "./dist/js/tests/helpers/setup-browser-env.js"
+    ],
+    "verbose": true
   }
 }

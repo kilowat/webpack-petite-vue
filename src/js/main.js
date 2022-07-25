@@ -29,6 +29,7 @@ store.user.init({userService: $get.userService});
 
 document.addEventListener("DOMContentLoaded", function(event) { 
   //to do
+  //app2
 });
 
 

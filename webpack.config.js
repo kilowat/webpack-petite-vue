@@ -9,8 +9,11 @@ const { resolve } = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const templateName = path.resolve(__dirname, '..').split(path.sep).pop();
 const isDev = process.env.NODE_ENV === 'development';
+const isTest = process.env.NODE_ENV === 'test';
 /*sprites path settings*/
 const svgPath = '/sprites/spritemap.svg';
+const nodeExternals = require('webpack-node-externals');
+
 /*****************************************/
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -32,11 +35,26 @@ function generateHtmlPlugins(templateDir) {
 }
 
 const htmlPlugins = generateHtmlPlugins("./src/html/views");
+const testsEntry = {};
+// prepare ava test files
+if (isTest) {
+  const read = require("fs-readdir-recursive");
+  const filteredFiles = read("./tests").filter(item => item.endsWith(".js"));
+    filteredFiles.forEach((f)=>{
+      const i = {
+        import: './tests/' + f,
+        filename: 'js/tests/' + f.replace('/', '_'),
+      };
+    testsEntry[f] = i;
+  })  
+}
+
 
 const config = {
   target:'web',
   entry: {
     main: ["./src/js/main.js", "./src/scss/main.scss"],
+    ...testsEntry,
   },
   output: {
     filename: "./js/[name].bundle.js",
@@ -50,9 +68,9 @@ const config = {
     //Нужен php скрипт, который по префиксу name будет получить путь до чанка и в head вставлять preload ссылку до чанка.
   },
   devtool: isDev ? "source-map" : false,
-  mode: isDev ? "development" : "production",
+  mode: (isDev || isTest) ? "development" : "production",
   optimization: {
-    minimize: !isDev,
+    minimize: !isDev && !isTest ,
     minimizer: [
       new TerserPlugin({
         extractComments: true,
@@ -65,9 +83,11 @@ const config = {
   },
   devServer: {
     host: 'localhost',
-    watchFiles: ['src/**'],
+    watchFiles: ['src/**', 'tests/**'],
     devMiddleware: {
-      writeToDisk: false,
+      writeToDisk: (filePath) => {
+        return /^(?!.*.hot-update).*/.test(filePath);
+      },
     },
     static: {
       directory: path.join(__dirname, 'dist'),
@@ -162,6 +182,7 @@ const config = {
       }
     ]
   },
+  externals: [isTest ? nodeExternals() : {}],
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/[name].bundle.css",
