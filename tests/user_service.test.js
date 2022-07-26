@@ -11,9 +11,7 @@ var mock = new MockAdapter(axios);
 // Mock any GET request to /users
 // arguments for reply are (status, data, headers)
 const mockUser = { id: 1, name: "admin" };
-mock.onGet("/user").reply(200, {
-  user: mockUser,
-});
+mock.onGet("/user").reply(200, mockUser);
 
 const userService = new UserSerivce(axios);
 
