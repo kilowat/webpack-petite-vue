@@ -10,7 +10,7 @@ export default class UserSerivce{
     if (response.status !== 200) {
       throw Error('Server error');
     }
- 
-    return UserModel.FromJson(response.data.user);
+
+    return UserModel.FromJson(response.data);
   }
 }

@@ -17,7 +17,7 @@ mock.onGet("/user").reply(200, {
 
 const userService = new UserSerivce(axios);
 
-test('adds 1 + 2 to equal 3', async () => {
+test('User must be equal', async () => {
   const user = await userService.getCurrent();
   expect(user).toEqual(UserModel.FromJson(mockUser));
 });
