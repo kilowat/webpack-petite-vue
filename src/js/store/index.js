@@ -1,13 +1,9 @@
-import favorite from "./favorite"
+import createFavoriteStore from "./favorite"
 import createUserStore from './user';
 
-export default ({ $di })=>{
- 
-    const user = createUserStore({ 
-        userService: $di.userService
-    }); 
+export default ({ $sl })=>{
     return {
-        favorite,
-        user,
+        favorite: createFavoriteStore(),
+        user: createUserStore({ userService: $sl.userService }),
     }
 }

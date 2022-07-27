@@ -4,14 +4,14 @@ import components from './components'
 import createStore from './store'
 import directives from './directives';
 import EventEmitter from './utils/EventEmitter';
-import di, { $di } from './di';
+import sl, { $sl } from './sl';
 
-di.init();
+sl.init();
 
-const store = createStore({ $di });
+const store = createStore({ $sl });
 
 const settings = {
-  $di,
+  $sl,
   store,
   ...components,
 }

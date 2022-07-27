@@ -71,9 +71,9 @@ module.exports = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  // moduleDirectories: [
-  //   "node_modules"
-  // ],
+   moduleDirectories: [
+     'node_modules',
+   ],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
@@ -88,7 +88,9 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+   moduleNameMapper: {
+
+   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -126,7 +128,7 @@ module.exports = {
   // A list of paths to directories that Jest should use to search for files in
    roots: [
      "<rootDir>/tests",
-     "<rootDir>/src/js"
+     "<rootDir>/src/js",
    ],
 
   // Allows you to use a custom runner instead of Jest's default test runner
@@ -174,13 +176,13 @@ module.exports = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
+  transform: undefined,
+
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-   transformIgnorePatterns: [
-     "\\\\node_modules\\\\",
-     "\\.pnp\\.[^\\\\]+$"
-   ],
+  transformIgnorePatterns: [
+   // "\\\\node_modules\\\\"
+  ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
