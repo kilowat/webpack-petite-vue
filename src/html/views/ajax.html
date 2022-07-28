@@ -95,9 +95,9 @@
       <div>count: {{ store.favorite.count }}</div>
       <div>items: {{ store.favorite.items }}</div>
     </div>
-    <div class="news" v-scope="NewsList()" v-effect="init($el)">
+    <div class="news">
       <div class="news__list">
-        <%for(var i = 0; i < 3; i++){%>
+        <%for(var i = 4; i < 10; i++){%>
           <div class="news__item">
             <div class="news__name"><%=news.name%></div>
             <div class="news__text"><%=news.text%></div>
@@ -106,15 +106,20 @@
                 v-scope=""
                 @click="store.favorite.add(<%=i%>)"
                 class="btn btn-favorite">
-                <svg class="svg-icon" v-scope="SvgIcon('heart')" v-if="!store.favorite.isSelected(<%=i%>)"></svg>
-                <svg class="svg-icon" v-scope="SvgIcon('heart-filled')" v-else></svg>
+
+                <svg v-if="!store.favorite.isSelected(<%=i%>)" 
+                  class="svg-icon" 
+                  v-scope="SvgIcon('heart')">
+                </svg>
+                <svg v-else 
+                  class="svg-icon" 
+                  v-scope="SvgIcon('heart-filled')">
+                </svg>
+                
               </button>
             </div>
           </div>
         <%}%>
-      </div>
-      <div style="text-align: center" v-scope> 
-        <button @click="loadMore()" class="btn btn-primary">Load more</button>
       </div>
     </div>
   </div>

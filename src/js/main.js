@@ -16,15 +16,24 @@ const settings = {
   ...components,
 }
 
-const app = createApp(settings)
 const eventBus = new EventEmitter();
+window.eventBus = eventBus;
+
+const app = createApp(settings)
 
 for(const i in directives) {
   app.directive(i, directives[i]);
 }
 
-window.eventBus = eventBus;
+
+
 app.mount('#app');
+
+// fire global events
+eventBus.on('remount', ()=>{
+  app.mount('#app');
+})
+
 
 // init global store
 store.favorite.init();

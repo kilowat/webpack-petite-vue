@@ -1,7 +1,6 @@
 import Bottle from "bottlejs";
 import UserSerivce from "./api/user/UserService";
 import client from "./api/client";
-
 export const sl = new Bottle();
 
 export const init = () => {
