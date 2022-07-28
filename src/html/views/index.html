@@ -114,7 +114,7 @@
         <%}%>
       </div>
       <div style="text-align: center" v-scope> 
-        <button @click="loadMore()" class="btn btn-primary">Load more</button>
+        <button @click="loadMore()" :disabled="loaded" class="btn btn-primary">Load more</button>
       </div>
     </div>
   </div>
