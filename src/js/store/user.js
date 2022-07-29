@@ -1,5 +1,10 @@
 import { reactive } from 'petite-vue'
+import UserSerivce from '../api/user/UserService';
 
+/**
+ * @param { Object } param
+ * @param { UserSerivce } param.userService
+ */
 export default ({ userService }) => {
   const state = reactive({
     data: null,

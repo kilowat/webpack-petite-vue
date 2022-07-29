@@ -1,6 +1,11 @@
 import UserModel from './UserModel';
+import client from '../client';
 
 export default class UserSerivce{
+  /**
+   * @param { Object } param
+   * @param { client } param.client
+   */
   constructor({ 
     client = required('client')
    }) {
@@ -19,6 +24,6 @@ export default class UserSerivce{
   }
 }
 
-function required(name){
+function required(name) {
   throw Error(`Argument ${name} is required`);
 }

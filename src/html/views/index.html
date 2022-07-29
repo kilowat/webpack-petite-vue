@@ -95,7 +95,7 @@
       <div>count: {{ store.favorite.count }}</div>
       <div>items: {{ store.favorite.items }}</div>
     </div>
-    <div class="news" v-scope="NewsList()" v-effect="init($el)">
+    <div class="news" v-scope="NewsList({ eventBus })" v-effect="init($el)">
       <div class="news__list">
         <%for(var i = 0; i < 3; i++){%>
           <div class="news__item">
