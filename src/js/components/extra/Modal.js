@@ -6,7 +6,7 @@ const state = reactive({
     const $el = document.querySelector('#'+id);
     if (!this.items[id]) this.items[id] = {};
     this.items[id].$el = $el;
-    this.items[id].data = data || {};
+    this.items[id].data = data;
   },
   getEl(id) {
     return state.items[id].$el;
@@ -14,14 +14,21 @@ const state = reactive({
 })
 
 export default {
-  create(props, data){
-    state.init(props.id, data);
-    const width = props.width || 640;
-    const $el = state.getEl(props.id);
+  /**
+   * 
+   * @param {Object} param
+   * @param {string} param.id
+   * @param {number} param.width = 640
+   * @param {Object} data = {}
+   * @returns 
+   */
+  create({ id, width = 640 }, data = {}){
+    state.init(id, data);
+    const $el = state.getEl(id);
     $el.setAttribute('aria-hidden', false);
     $el.classList.add('m-close');
     const template = `
-    <div v-scope class="modal-root" @click="Modal.close('${props.id}')">
+    <div v-scope class="modal-root" @click="Modal.close('${id}')">
       <svg class="svg-icon modal-close-icon" v-scope="SvgIcon('close')"></svg>
       <div class="modal-bg">
         <div class="modal-window" @click.stop="" :style="'--modal__max-width:' + width + 'px'">
@@ -32,7 +39,7 @@ export default {
 
     return {
       $template: template,
-      get data() {return state.items[props.id].data},
+      get data() {return state.items[id].data},
       show: false,
       width,
       mounted() {
@@ -40,7 +47,12 @@ export default {
       },
     }
   },
-  show(id, data) {
+  /**
+   * 
+   * @param {string} id 
+   * @param {Object} data 
+   */
+  show(id, data = {}) {
     this.closeAll(id);
     const $el = state.getEl(id);
 
@@ -54,6 +66,10 @@ export default {
     
     document.querySelector('body').style.overflow = 'hidden';
   },
+  /**
+   * 
+   * @param {string} id 
+   */
   close(id) {
     if (!state.items[id]) throw Error(`Modal with id ${id} not found`);
     const $el = state.getEl(id);

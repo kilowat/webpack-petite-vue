@@ -19,15 +19,20 @@
   <div class="component-block">
     <div class="component-name">Modal:</div>
     <div v-scope> 
-      <div>
-        <button class="btn btn-primary" @click="Modal.show('modal-1', {value:2})">Open modal with data: {value: 2}</button>
-      </div>
+      <!--Create modal window with id 'modal-1' init value: 0-->
       <div 
         v-scope="Modal.create({id: 'modal-1', width:400 }, {value: 0})"
         id="modal-1" 
         aria-hidden="true"
         @vue:mounted="mounted">
           <div>{{ data }}</div>
+      </div>
+      <div>
+        <button 
+          class="btn btn-primary"
+           @click="Modal.show('modal-1', {value:2})">
+            Open modal with data: {value: 2}
+         </button>
       </div>
     </div>
   </div>
