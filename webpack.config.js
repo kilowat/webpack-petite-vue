@@ -34,7 +34,6 @@ function generateHtmlPlugins(templateDir) {
 
 const htmlPlugins = generateHtmlPlugins("./src/html/views");
 
-
 const config = {
   target:'web',
   entry: {
@@ -44,12 +43,11 @@ const config = {
     filename: "./js/[name].bundle.js",
     clean: true,
     path: path.resolve(__dirname, 'dist'),
+    //Creates a chunk named prefix_Hash.
     chunkFilename: 'js/[name]_[contenthash].js',
-    //Ниже настройки для cms,
-    //Путь куда билдить файлы в шаблон CMS
+    //default root
     //publicPath : `/local/templates/${templateName}/assets/dist/`,
-    //Создёт чанк с названием префикс_Хеш, для формирования Preload Link.
-    //Нужен php скрипт, который по префиксу name будет получить путь до чанка и в head вставлять preload ссылку до чанка.
+
   },
   devtool: isDev ? "source-map" : false,
   mode: isDev ? "development" : "production",
@@ -94,26 +92,6 @@ const config = {
           },
         ],
       },
-      /*
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use:{
-          loader: 'babel-loader',
-          options: {
-            plugins: [
-              "@babel/plugin-transform-runtime",
-              "transform-html-import-to-string"
-            ],
-            presets: [
-              [
-                '@babel/preset-env',
-              ]
-            ]
-          }
-        },
-      },
-      */
       {
         test: /\.(css|sass|scss)$/,
         include: [

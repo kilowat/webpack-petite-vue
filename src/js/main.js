@@ -19,7 +19,6 @@ const settings = {
   ...components,
 }
 
-
 const app = createApp(settings)
 
 for(const i in directives) {
@@ -41,7 +40,6 @@ for (const i in store) {
 
 document.addEventListener("DOMContentLoaded", function(event) { 
   //to do
-  //app2
 });
 
 

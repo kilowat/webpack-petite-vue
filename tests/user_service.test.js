@@ -1,5 +1,4 @@
 
-import apiConf  from '../src/js/api/config';
 import UserModel from '../src/js/api/user/UserModel';
 import UserSerivce from '../src/js/api/user/UserService';
 import ky from 'ky';

@@ -42,7 +42,7 @@
     <div v-scope="FeedBackForm()" class="form">
       <form @submit.prevent="submit">
         <div class="form-row">
-          <input type="tel" name="phone" class="input-text"  required placeholder="Телефон">
+          <input type="tel" name="phone" class="input-text"  required placeholder="Phone">
         </div>
         <div class="form-row">
           <input type="email" name="email" class="input-text" required placeholder="e-mail">
@@ -55,7 +55,7 @@
           </label>
         </div>
         <div class="form-row">
-          <button type="submit" class="btn btn-primary">Отправить</button>
+          <button type="submit" class="btn btn-primary">Send</button>
         </div>
       </form>
     </div>
@@ -63,7 +63,9 @@
 
   <div class="component-block">
     <div class="component-name">Static full slider</div>
-      <div class="swiper main-slider not-ready" v-cloak v-scope="FullSlider({name: 'value'})" v-effect="initSlider($el)">
+      <div class="swiper main-slider not-ready" 
+        v-cloak v-scope="FullSlider()" 
+        v-effect="initSlider($el)">
       <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide">
@@ -85,7 +87,10 @@
 
   <div class="component-block">
     <div class="component-name">Dynamic full slider</div>
-    <div class="swiper main-slider" v-cloak v-scope="DynamicSlider({name: 'value'})" v-effect="initSlider($el)"></div>
+    <div class="swiper main-slider" 
+      v-cloak v-scope="DynamicSlider()" 
+      v-effect="initSlider($el)">
+    </div>
   </div>
 
   <div class="component-block">
@@ -120,6 +125,7 @@
       </div>
       <div style="text-align: center" v-scope> 
         <button @click="loadMore()" :disabled="loaded" class="btn btn-primary">Load more</button>
+        <div>If you change the dom , exmaple by ajax request. Call app.mount(), and all new components in tree will be mounted.</div>
       </div>
     </div>
   </div>

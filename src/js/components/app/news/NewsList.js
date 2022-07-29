@@ -9,12 +9,10 @@ export default ({ eventBus }) => {
   
   return {
     loaded: false,
-    
     init($el) {
       $root = $el;
     },
     async loadMore() {
-      
       this.loaded = true;
       const res = await fetch('/ajax.html');
       const htmlRes = await res.text();

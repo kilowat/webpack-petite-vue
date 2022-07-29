@@ -3,8 +3,8 @@ import createUserStore from "../src/js/store/user";
 import UserSerivce from "../src/js/api/user/UserService";
 import UserModel from "../src/js/api/user/UserModel";
 import ky from 'ky';
-describe('UseStore', ()=>{
 
+describe('UseStore', ()=>{
   const userData = { id: 1, name: "admin" };
   const response = {
     status: 200,
@@ -15,11 +15,11 @@ describe('UseStore', ()=>{
 
   const mockUserService = new UserSerivce({client: ky })
   const userStore = createUserStore({ userService: mockUserService });
+  
   jest.spyOn(UserSerivce.prototype, 'getCurrent').mockImplementation(() => UserModel.FromJson(userData));
 
   it('User must be equal', async () => {
     await userStore.init();
-    console.log(userStore.data);
     expect(userStore.data).toEqual(UserModel.FromJson(userData));
   });
 
