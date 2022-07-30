@@ -10,7 +10,7 @@
 <%= _.template(require('./../includes/header.html').default)(data) %>
   <div class="component-block">
     <div class="component-name">User:</div>
-    <div v-scope v-cloak> 
+    <div v-scope v-cloak style="height:50px"> 
         <div v-if="store.user.isLoading">Loading</div>
         <div v-else-if="store.user.isError">Loading Error</div>
         <div v-else>{{ store.user.data }}</div>
@@ -63,7 +63,7 @@
 
   <div class="component-block">
     <div class="component-name">Static full slider</div>
-      <div class="swiper main-slider not-ready" 
+      <div class="swiper main-slider not-ready"
         v-cloak v-scope="FullSlider()" 
         v-effect="initSlider($el)">
       <div class="swiper-wrapper">

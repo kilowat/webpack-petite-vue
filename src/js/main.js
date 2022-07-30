@@ -29,6 +29,7 @@ app.mount('#app');
 
 // fire global events
 eventBus.on('remount', () => {
+  // remount by emit
   app.mount('#app');
 })
 
@@ -41,5 +42,3 @@ for (const i in store) {
 document.addEventListener("DOMContentLoaded", function(event) { 
   //to do
 });
-
-

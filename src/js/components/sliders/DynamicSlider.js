@@ -4,6 +4,10 @@ export default (props)=>{
   return {
     $template: template,
     async initSlider($el) {
+      import ('swiper/css');
+      import ('swiper/css/navigation');
+      import ('swiper/css/pagination');
+
       const {Swiper, Navigation, Pagination} = await import('swiper');
       const swiper = new Swiper($el, {
         modules: [Navigation, Pagination],

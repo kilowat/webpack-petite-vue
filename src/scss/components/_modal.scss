@@ -68,7 +68,7 @@
   cursor: pointer;
 }
 
-[aria-hidden="true"] { visibility: hidden; }
+[aria-hidden="true"] { visibility: hidden; height: 0; }
 
 @keyframes fadeIn{
   0% {

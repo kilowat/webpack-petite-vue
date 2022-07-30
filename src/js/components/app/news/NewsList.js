@@ -1,5 +1,3 @@
-import EventEmitter from "../../../utils/EventEmitter";
-
 /**
  * @param {Object} param
  * @param {EventEmitter} param.eventBus
@@ -23,7 +21,7 @@ export default ({ eventBus }) => {
       for (let i = 0; i < newsItems.length; i++) {
         container.appendChild(newsItems[i])
       }
-      
+
       eventBus.emit('remount');
     }
   }

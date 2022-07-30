@@ -6,9 +6,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { resolve } = require("path");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require("terser-webpack-plugin");
 const templateName = path.resolve(__dirname, '..').split(path.sep).pop();
 const isDev = process.env.NODE_ENV === 'development';
+const isStats = process.env.NODE_ENV === 'stats';
 /*sprites path settings*/
 const svgPath = '/sprites/spritemap.svg';
 
@@ -55,6 +57,10 @@ const config = {
     minimize: !isDev ,
     minimizer: [
       new TerserPlugin({
+        terserOptions: {
+          ecma: 2017,
+          safari10: true
+        },
         extractComments: true,
         parallel: false,
         terserOptions: {
@@ -143,6 +149,7 @@ const config = {
     ]
   },
   plugins: [
+    new BundleAnalyzerPlugin({  analyzerMode: isStats ? 'servicer' : 'disabled', }),
     new MiniCssExtractPlugin({
       filename: "css/[name].bundle.css",
     }),
