@@ -22,7 +22,7 @@ export default ({ eventBus }) => {
         container.appendChild(newsItems[i])
       }
 
-      eventBus.emit('remount');
+      eventBus.emit('mount');
     }
   }
 }

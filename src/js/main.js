@@ -24,13 +24,48 @@ const app = createApp(settings)
 for(const i in directives) {
   app.directive(i, directives[i]);
 }
-// init app
-app.mount('#app');
-
-// fire global events
-eventBus.on('remount', () => {
-  // remount by emit
+/*Fix valid html*/
+const init = ()=> {
+  const attrs = {
+    'data-v-scope': 'v-scope',
+    'data-v-effect': 'v-effect',
+    'data-v-class' : ':class',
+    'data-v-mounted': 'v-on:vue:mounted',
+    'data-v-unmounted': 'v-on:vue:unmounted',
+    'data-v-on-click': 'v-on:click',
+    'data-v-on-keyup': 'v-on:keyup',
+    'data-v-bind': 'v-bind',
+    'data-v-model': 'v-model',
+    'data-v-if': 'v-if',
+    'data-v-else': 'v-else',
+    'data-v-else-if': 'v-else-if',
+    'data-v-for': 'v-for',
+    'data-v-show': 'v-show',
+    'data-v-html': 'v-html',
+    'data-v-text': 'v-text',
+    'data-v-pre': 'v-pre',
+    'data-v-once': 'v-once',
+    'data-v-cloak': 'v-cloak',
+    'data-v-disabled': ':disabled',
+    'data-v-submit': 'v-on:submit.prevent',
+  };
+  for(const attrIndex in attrs) {
+    document.querySelectorAll('['+attrIndex+']')
+        .forEach((el) => {
+            if(el.hasAttribute(attrIndex)) {
+              const attr = el.getAttribute(attrIndex);
+              el.removeAttribute(attrIndex)
+              el.setAttribute(attrs[attrIndex], attr);
+            }
+        });
+  }
   app.mount('#app');
+}
+
+init();
+// fire global events
+eventBus.on('mount', () => {
+  init();
 })
 
 // auto init store
