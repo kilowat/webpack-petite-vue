@@ -9,6 +9,7 @@ module.exports = {
         ["@babel/env", {"modules": false}],
       ],
       plugins: [
+        ["@babel/plugin-proposal-class-properties", { "loose": false }],
         "@babel/plugin-transform-modules-commonjs",
         "syntax-dynamic-import",
         "@babel/plugin-transform-runtime"
