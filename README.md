@@ -1,4 +1,4 @@
-# Webpack tools for web design with petite-vue.
+# Webpack tools with lit.js.
 ## Commands:
 + npm run dev -> development
 + npm run prod -> production

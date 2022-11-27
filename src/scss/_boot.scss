@@ -1,12 +1,10 @@
 @import 'icons';
 @import "variables";
-@import "~normalize.css";
+@import "norm.scss";
 @import "~breakpoint-sass";
-@import 'smart-grid';
 @import "header";
 @import "footer";
 @import "sidebar";
-@import "components/index";
 @import "pages/index";
 @import "inputs/index";
 @import "demo";

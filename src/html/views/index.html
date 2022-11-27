@@ -8,126 +8,22 @@
   }
 %>
 <%= _.template(require('./../includes/header.html').default)(data) %>
-  <div class="component-block">
-    <div class="component-name">User:</div>
-    <div v-scope v-cloak style="height:50px"> 
-        <div v-if="store.user.isLoading">Loading</div>
-        <div v-else-if="store.user.isError">Loading Error</div>
-        <div v-else>{{ store.user.data }}</div>
+<div>it's work</div>
+<swiper-slider>
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      
     </div>
-  </div>
-  <div class="component-block">
-    <div class="component-name">Modal:</div>
-    <div v-scope> 
-      <!--Create modal window with id 'modal-1' init value: 0-->
-      <div 
-        v-scope="Modal.create({id: 'modal-1', width:400 }, {value: 0})"
-        id="modal-1" 
-        aria-hidden="true"
-        @vue:mounted="mounted">
-          <div>{{ data }}</div>
-      </div>
-      <div>
-        <button 
-          class="btn btn-primary"
-           @click="Modal.show('modal-1', {value:2})">
-            Open modal with data: {value: 2}
-         </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="component-block">
-    <div class="component-name">form:</div>
-    <div v-scope="FeedBackForm()" class="form">
-      <form @submit.prevent="submit">
-        <div class="form-row">
-          <input type="tel" name="phone" class="input-text"  required placeholder="Phone">
-        </div>
-        <div class="form-row">
-          <input type="email" name="email" class="input-text" required placeholder="e-mail">
-        </div>
-        <div class="form-row">
-          <label class="checkbox">
-            <span class="checkbox-label">save</span>
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-          </label>
-        </div>
-        <div class="form-row">
-          <button type="submit" class="btn btn-primary">Send</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="component-block">
-    <div class="component-name">Static full slider</div>
-      <div class="swiper main-slider not-ready"
-        v-cloak v-scope="FullSlider()" 
-        v-effect="initSlider($el)">
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide">
-          <img src="/uploads/slide-1.png" alt="">
-        </div>
-        <div class="swiper-slide">
-          <img src="/uploads/slide-1.png" alt="">
-        </div>
-        <div class="swiper-slide">
-          <img src="/uploads/slide-1.png" alt="">
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-scrollbar"></div>
-    </div>
-  </div>
-
-  <div class="component-block">
-    <div class="component-name">Dynamic full slider</div>
-    <div class="swiper main-slider" 
-      v-cloak v-scope="DynamicSlider()" 
-      v-effect="initSlider($el)">
-    </div>
-  </div>
-
-  <div class="component-block">
-    <div class="component-name">Sprite svg:</div>
-    <svg class="svg-icon" v-scope="SvgIcon('pencil')"></svg>
-    <svg class="svg-icon" v-scope="SvgIcon('freebsd')"></svg>
-  </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
   
-  <div class="component-block">
-    <div class="component-name">News list and store:</div>
-    <div class="favorite-count" v-scope>
-      <div>count: {{ store.favorite.count }}</div>
-      <div>items: {{ store.favorite.items }}</div>
-    </div>
-    <div class="news" v-scope="NewsList({ eventBus })" v-effect="init($el)">
-      <div class="news__list">
-        <%for(var i = 0; i < 3; i++){%>
-          <div class="news__item">
-            <div class="news__name"><%=news.name%></div>
-            <div class="news__text"><%=news.text%></div>
-            <div class="news__action-row">
-              <button 
-                v-scope=""
-                @click="store.favorite.add(<%=i%>)"
-                class="btn btn-favorite">
-                <svg class="svg-icon" v-scope="SvgIcon('heart')" v-if="!store.favorite.isSelected(<%=i%>)"></svg>
-                <svg class="svg-icon" v-scope="SvgIcon('heart-filled')" v-else></svg>
-              </button>
-            </div>
-          </div>
-        <%}%>
-      </div>
-      <div style="text-align: center" v-scope> 
-        <button @click="loadMore()" :disabled="loaded" class="btn btn-primary">Load more</button>
-        <div>If you change the dom , exmaple by ajax request. Call app.mount(), and all new components in tree will be mounted.</div>
-      </div>
-    </div>
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
   </div>
-
+</swiper-slider>
 <%= _.template(require('./../includes/footer.html').default)(data) %>
